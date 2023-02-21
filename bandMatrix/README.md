@@ -1,15 +1,15 @@
 # Pasovne diagonalno dominantne matrike
 
-V praksi velikokrat naletimo na razpršene matrike: matrike, ki večinoma vsebujejo ničelne elemente in le nekaj neničelnih. Lasntnosti razpršenih matrik lahko izkoristimo pri algoritmih numerične matematike, tako da obdelujemo in shranimo le neničelne elemente. [Pasovna matrika](https://sl.wikipedia.org/wiki/Pasovna_matrika) je razpršena matrika, kjer se vsi neničelni elementi nahajajo na glavni diagonali ter na `k1` spodnjih in `k2` zgornjih diagonalah. Da je diagonalno dominantna mora veljati tudi
+V praksi velikokrat naletimo na razpršene matrike: matrike, ki večinoma vsebujejo ničelne elemente in le nekaj neničelnih. Lasntnosti razpršenih matrik lahko izkoristimo pri algoritmih numerične matematike, tako da obdelujemo in shranimo le neničelne elemente. [Pasovna matrika](https://sl.wikipedia.org/wiki/Pasovna_matrika) je razpršena matrika, kjer se vsi neničelni elementi nahajajo na glavni diagonali ter na $k1$ spodnjih in $k2$ zgornjih diagonalah. Da je diagonalno dominantna mora veljati tudi
 
 ```math
 |a_{ii}|\ge\sum_{j\not=i}|a_{ij}|.
 ```
 
-Takšno strukturo lahko izkoristimo, tako da definiramo tip `PasovnaMatrika`, ki vsebuje števili `k1` in `k2` ter matriko (k1+k2+1 x n dimenzij) diagonal razvrščenih v stolpce: 
-najprej `k1` spodnjih diagonal, nato glavna diagonala, ki ji sledi še `k2` zgornjih diagonal. Podobno definiramo tudi `ZgornjePasovnaMatriko`, ki hrani le spodnje in glavno diagonalo ter `SpodnjePasovnaMatrika`, ki hrani le zgornje in glavno diagonalo.
+Takšno strukturo lahko izkoristimo, tako da definiramo tip `PasovnaMatrika`, ki vsebuje števili $k1$ in $k2$ ter matriko (k1+k2+1 x n dimenzij) diagonal razvrščenih v stolpce: 
+najprej $k1$ spodnjih diagonal, nato glavna diagonala, ki ji sledi še $k2$ zgornjih diagonal. Podobno definiramo tudi `ZgornjePasovnaMatriko`, ki hrani le spodnje in glavno diagonalo ter `SpodnjePasovnaMatrika`, ki hrani le zgornje in glavno diagonalo.
 
-Primer kreiranja pasovne matrike `P`:
+Primer kreiranja pasovne matrike $P$:
 
 ```jldoctest
 julia> A = [0 0 3 4 1 ;0 6 7 8 1;9 10 11 12 0;13 14 15 0 0]
@@ -37,13 +37,13 @@ Za omenjene tipe implementiramo funkcije za:
 - `lu`, ki izračuna LU-razcep brez pivotiranja, če je matrika diagonalno
    dominantna, sicer pa javi napako. Vrnjena faktorja naj bosta tipa `SpodnjePasovnaMatrika` in `ZgornjePasovnaMatrika`.
 - „deljenje“ z leve `Base.\`. Pri `SpodnjePasovnaMatriki` uporabimo direktno vstavljanje, pri `ZgornjePasovnaMatriki` 
-    obratno vstavljanje, pri `PasovnaMatriki` pa rešimo enačbo $`Ax=b`$ s pomočjo LU razcepa.
+    obratno vstavljanje, pri `PasovnaMatriki` pa rešimo enačbo $Ax=b$ s pomočjo LU razcepa.
 - Dodatno smo implementirali še funkciji `polna`, ki izpiše matriko s preostalimi, nepasovnimi elementi in funkcijo `pasovnaLaplace` s katero generiramo pasovno Laplaceovo 2D matriko za reševanje minimalnih ploskev.
 
 Funkcijam lahko zmanjšamo zahtevnost, tako da operiramo le na pasovnih elementih.
 
 ## Primer
-Poleg boljše časovne zahtevnosti nam pasovne matrike omogočajo reševanje večjih sistemov enačb, katerih polne matrike ni mogoče shraniti v pomnilnik. Npr. za Laplacevo matriko dimenzij 102400x102400, na običajnem prenosniku z 7GB spomina ni možno rešiti problema [minimalnih ploskev](https://gitlab.com/nummat/nummat-1920/blob/master/docs/src/vaje/2_linearni_sistemi/03_minimalne_ploskve.md#), saj nam julia javi `OutOfMemoryError()`. Naša `pasovnaMatrika` pa je za isti problem velika le 102400x641, kar lahko obdelujemo (čeprav bi porabili veliko časa - glej spodaj).
+Poleg boljše časovne zahtevnosti nam pasovne matrike omogočajo reševanje večjih sistemov enačb, katerih polne matrike ni mogoče shraniti v pomnilnik. Npr. za Laplacevo matriko dimenzij 102400x102400, na običajnem prenosniku z 7GB spomina ni možno rešiti problema [minimalnih ploskev](https://gitlab.com/nummat/nummat-1920/blob/master/docs/src/vaje/2_linearni_sistemi/03_minimalne_ploskve.md#), saj nam julia javi *OutOfMemoryError()*. Naša `pasovnaMatrika` pa je za isti problem velika le 102400x641, kar lahko obdelujemo (čeprav bi porabili veliko časa - glej spodaj).
 
 Spodaj je pikazan primer reševanja minimalnih ploskev dimenzij 20x20 s pasovno matriko.
 
@@ -75,12 +75,3 @@ BenchmarkTools.TrialRatio:
   memory:           8.58392241863072
   allocs:           652.1601006207652
 ```
-
-## Koda
-
-```@autodocs
-Modules = [NumMat]
-Pages = ["pasovnaMatrika.jl"]
-Order = [:function, :type]
-```
-
