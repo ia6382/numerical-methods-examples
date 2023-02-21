@@ -6,7 +6,7 @@ Homework for the Numerical Mathematics course at the University of Ljubljana, Fa
 Homework focused on specific scenarios where we could use the acquired knowledge of these topics.
 
 # Content
-Each folder contains the source code of the algorithm, short automatic tests and extensive documentation in the Slovenian language. To briefly summarize the content:
+Each folder contains the well documented source code of the algorithm, short automatic tests and a report in the Slovenian language. To briefly summarize the content:
 * Solving a system of linear equations with LU decomposition optimised specifically for the diagonally dominant band matrices
 * Solving a system of linear equations with the conjugate gradient method and the incomplete Cholesky factorization as its preconditioner
 * Barycentric interpolation variant of Lagrange polynomial interpolation 
