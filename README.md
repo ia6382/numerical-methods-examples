@@ -5,7 +5,7 @@ Several numerical analysis algorithms implemented in the [Julia language](https:
 Homework for the Numerical Mathematics course at the University of Ljubljana, Faculty of Computer and Information Science. The course covered several important algorithms and approaches for numerically solving problems in the following topics: systems of linear equations, eigenvalues, systems of nonlinear equations, interpolation and approximation, integration, derivation, systems of differential equations. 
 Homework focused on specific scenarios where we could use the acquired knowledge of these topics.
 
-# Files
+# Content
 Each folder contains the source code of the algorithm, short automatic tests and extensive documentation in the Slovenian language. To briefly summarize the content:
 * Solving a system of linear equations with LU decomposition optimised specifically for the diagonally dominant band matrices
 * Solving a system of linear equations with the conjugate gradient method and the incomplete Cholesky factorization as its preconditioner
