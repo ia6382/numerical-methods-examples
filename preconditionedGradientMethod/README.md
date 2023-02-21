@@ -22,16 +22,16 @@ Vektor x določimo iterativno s formulo
 ```math
  x_{k+1}=x_k+\alpha_kp_k 
 ``` 
-kjer je $`\alpha`$ skalar, ki v smeri vektorja $`p_k`$ najbolj zmanjša vrednost funkcije $`f(x)`$. Smerni vektorji $`p`$ so med seboj konjugirani glede na matriko A ($`p^TAp=0`$), ker se tako hitreje premikamo proti minimumu.
+kjer je $\alpha$ skalar, ki v smeri vektorja $p_k$ najbolj zmanjša vrednost funkcije $f(x)$. Smerni vektorji $p$ so med seboj konjugirani glede na matriko A ($p^TAp=0$), ker se tako hitreje premikamo proti minimumu.
 
 ## Predpogojevanje
 
-Pred začetkom iterativne metode lahko matriko sistema transformiramo v obliko bolj primerno za računanje z izbrano metodo. Temu procesu se reče predpogojevanje. Pri konjugiranih gradientih je pogosto uporabljeno predpogojevanje z [nepopolnim Cholesky razcepom](https://en.wikipedia.org/wiki/Incomplete_Cholesky_factorization), ki matriko razcepi na (v našem primeru) spodnje trikotno matriko, tako da velja $`A=L^TL`$. Nepopolni Cholesky razcep je enak popolnemu Cholesky razcepu, le da ničelnih elementov matrike na spreminjamo. Tako hitro dobimo dovolj dober približek razcepa, ki nam pohitri konvergenco iterativnih metod. 
+Pred začetkom iterativne metode lahko matriko sistema transformiramo v obliko bolj primerno za računanje z izbrano metodo. Temu procesu se reče predpogojevanje. Pri konjugiranih gradientih je pogosto uporabljeno predpogojevanje z [nepopolnim Cholesky razcepom](https://en.wikipedia.org/wiki/Incomplete_Cholesky_factorization), ki matriko razcepi na (v našem primeru) spodnje trikotno matriko, tako da velja $A=L^TL$. Nepopolni Cholesky razcep je enak popolnemu Cholesky razcepu, le da ničelnih elementov matrike na spreminjamo. Tako hitro dobimo dovolj dober približek razcepa, ki nam pohitri konvergenco iterativnih metod. 
 
 ## Konvergenca
 V okviru domače naloge sem na primerih dokazal, da s uporabo predpogojevanja, metoda konjugiranih gradientov konvergira hitreje, kot brez predpogojevanja. Za testiranje sem uporabljal naključno generirane razpršene SPD matrike, ki so v jeziku Julia shranjene v [Compressed Sparse Column (CSC)](https://docs.julialang.org/en/v1/stdlib/SparseArrays/) formatu.
 
-V algoritmu za [konjugirane gradiente s predpogojevanjem](https://en.wikipedia.org/wiki/Conjugate_gradient_method#The_preconditioned_conjugate_gradient_method) ne računamo direktno inverza matrike $`M`$ pri $`z=M^{-1}r`$, ampak izpeljemo rezultat z uporabo lastnosti predpogojene matrike s Cholesky razcepom:
+V algoritmu za [konjugirane gradiente s predpogojevanjem](https://en.wikipedia.org/wiki/Conjugate_gradient_method#The_preconditioned_conjugate_gradient_method) ne računamo direktno inverza matrike $M$ pri $z=M^{-1}r$, ampak izpeljemo rezultat z uporabo lastnosti predpogojene matrike s Cholesky razcepom:
 
 ```math
 M=L^TL\\
@@ -78,12 +78,4 @@ julia> iter
 julia> r = S*x - b;
 julia> maxerr = maximum(abs.(r))
 4.5218273569958e-12
-```
-
-## Koda
-
-```@autodocs
-Modules = [NumMat, Base]
-Pages = ["precond_grad.jl"]
-Order   = [:function, :type]
 ```
