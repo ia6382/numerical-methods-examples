@@ -7,7 +7,7 @@ Nihalo lahko opišemo z diferencialno enačbo:
     {g\over l}\sin(\theta(t))+\theta^{\prime\prime}(t)=0, \quad \theta(0)=
     \theta_0,\ \theta^{\prime}(0)=\theta^{\prime}_0
 ```
-Razvidno je, da je odmik nihala (v radianih) poleg gravitacijske konstante $`g=9.80665`$ in dolžine vrvi $`l`$, odvisen še od začetnega odmika $`\theta_0`$ in kotne hitrosti $`\theta^{\prime}_0`$. Če želimo izračunati kotni odmik moramo enačbo najprej prevesti na diferencialni sistem enačb prvega reda.
+Razvidno je, da je odmik nihala (v radianih) poleg gravitacijske konstante $`g=9.80665`$ in dolžine vrvi $`l`$\, odvisen še od začetnega odmika $`\theta_0`$ in kotne hitrosti $`\theta^{\prime}_0`$. Če želimo izračunati kotni odmik moramo enačbo najprej prevesti na diferencialni sistem enačb prvega reda.
 
 Definiramo nove spremenljivke in z njimi zapišemo enačbo:
 ```math
@@ -44,7 +44,7 @@ Sistem diferencialnih enačb $`Y^{\prime} = F(Y_0)`$ lahko nato rešimo kot obi�
     y_{n+1}& = & y_n+(k_1+2k_2+2k_3+k_4)/6. \end{array}
 ```
 
-Na spodnji sliki lahko vidimo vpliv začetnih pogojev na nihalo z dolžino $`l = 1`$. Vrednosti vplivajo tako na amplitudo kot na frekvenco nihanja. V nekaterih primerih, ko je začetni odmik okoli $`\pi`$ stopinj (nihalo je navpično zgoraj), je funkcija nihanja precej drugačna od običajnega sinusa saj potrebuje dlje časa, da doseže velik odmik, preden hitro pade dol. 
+Na spodnji sliki lahko vidimo vpliv začetnih pogojev na nihalo z dolžino $`l = 1`$ . Vrednosti vplivajo tako na amplitudo kot na frekvenco nihanja. V nekaterih primerih, ko je začetni odmik okoli $`\pi`$ stopinj (nihalo je navpično zgoraj), je funkcija nihanja precej drugačna od običajnega sinusa saj potrebuje dlje časa, da doseže velik odmik, preden hitro pade dol. 
 
 ![parametri](img/parametri.PNG)
 
@@ -69,7 +69,7 @@ Glede na začetne pogoje (energijo nihala) se spreminja tudi nihajni čas ali pe
     \theta (t) - \theta_0 = 0
 ```
 
-Na sliki je viden vpliv začetnega odmika $`\theta_0`$ (od 0 do $`2\pi`$) in kotne hitrosti $`\theta^{\prime}_0`$ (od 0 do 5).
+Na sliki je viden vpliv začetnega odmika $`\theta_0`$ (od 0 do $`2\pi`$ ) in kotne hitrosti $`\theta^{\prime}_0`$ (od 0 do 5).
 
 ![theta](img/theta.PNG)
 
