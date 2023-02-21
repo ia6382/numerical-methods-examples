@@ -1,15 +1,15 @@
 # Lagrangeva interpolacija
 
-Polinomska interpolacija je določanje polinoma najmanjše stopnje, ki vsebuje vse podane vrednosti funkcije, ki jo želimo interpolirati. S polinomom, ki je lažje izračunljiv kot prvotna funkcija, lahko nato določimo (interpoliramo) vmesne vrednosti. Ena od metod interpolacije je [Lagrangeva polinomska interpolacija](https://en.wikipedia.org/wiki/Lagrange_polynomial), pri kateri uporabimo Lagrangeve bazne polinome $` li `$:
+Polinomska interpolacija je določanje polinoma najmanjše stopnje, ki vsebuje vse podane vrednosti funkcije, ki jo želimo interpolirati. S polinomom, ki je lažje izračunljiv kot prvotna funkcija, lahko nato določimo (interpoliramo) vmesne vrednosti. Ena od metod interpolacije je [Lagrangeva polinomska interpolacija](https://en.wikipedia.org/wiki/Lagrange_polynomial), pri kateri uporabimo Lagrangeve bazne polinome $li$:
 ```math
 l_j(x) = \prod_{m\neq j} \frac{x - x_m}{x_j - x_m}
 ```
-za določitev interpolacijskega polinoma $` L(x) `$:
+za določitev interpolacijskega polinoma $L(x)$:
 ```math
 L(x) = \sum^k_{j=1} y_j l_j
 ```
 ## Baricentrična oblika
-Za hitrejše računanje lahko uporabimo baricentrično obliko, kjer določimo uteži $` \lambda `$ tako, da nam ni potrebno računati vrednosti vseh $` li `$ vsakič, ko želimo pridobiti vrednost $` L(x) `$. Enačba se zato poenostavi v:
+Za hitrejše računanje lahko uporabimo baricentrično obliko, kjer določimo uteži $\lambda$ tako, da nam ni potrebno računati vrednosti vseh $li$ vsakič, ko želimo pridobiti vrednost $L(x)$. Enačba se zato poenostavi v:
 ```math
 L(x)=\begin{cases}
 \frac{\sum\frac{f(x_{j})\lambda_{j}}{x-x_{j}}}{\sum\frac{\lambda_{j}}{x-x_{j}}} & x\not=x_{j}\\
@@ -39,7 +39,7 @@ p(x) = \frac{d-c}{b-a}*(x-a)+c;
 ```
 
 ## Primer
-Interpolacijo testiramo na 3 funkcijah $` e^{-x^2} `$ na [-1, 1], $` \frac{sin(x)}{x} `$ na [0, 10] in $` x^2 - 2x `$ na [1, 3]. Da napaka interpolacije ne preseže $` 10^{-6} `$ moramo za funkcijo $` e^{-x^2} `$ uporabiti vsaj polinom stopnje 50, za $` \frac{sin(x)}{x} `$ polinom stopnje 131 in za $` x^2 - 2x `$ polinom stopnje 110.
+Interpolacijo testiramo na 3 funkcijah $e^{-x^2}$ na [-1, 1], $\frac{sin(x)}{x}$ na [0, 10] in $x^2 - 2x$ na [1, 3]. Da napaka interpolacije ne preseže $10^{-6}$ moramo za funkcijo $e^{-x^2}$ uporabiti vsaj polinom stopnje 50, za $\frac{sin(x)}{x}$ polinom stopnje 131 in za $x^2 - 2x$ polinom stopnje 110.
 
 ```jldoctest ;
 julia> fun1(x) = MathConstants.e^-x^2
@@ -65,7 +65,7 @@ Na sliki je prikazan graf napake od odvisnosti od stopnje interpolacijskega poli
 
 ![bi](bi.PNG)
 
-Ob bolj podrobni analizi lahko vidimo, da napaka ne pada linearno s številom stopnje polinomov ampak v nekaterih primerih oscilira, kar lahko vidimo na spodnji sliki. Za funkcijo $` x^2 - 2x `$ doseže veliko natančnost že s polinomom 3. stopnje nato pa oscilira med postopoma padajočo napaka in okoli $` 10^{-16} `$ veliko napako. Predpostavljam, da pride do velike natančnost, ko imamo liho število Čebišejevih točk, s katerimi lahko dobro interpoliramo to funkcijo.  
+Ob bolj podrobni analizi lahko vidimo, da napaka ne pada linearno s številom stopnje polinomov ampak v nekaterih primerih oscilira, kar lahko vidimo na spodnji sliki. Za funkcijo $x^2 - 2x$ doseže veliko natančnost že s polinomom 3. stopnje nato pa oscilira med postopoma padajočo napaka in okoli $10^{-16}$ veliko napako. Predpostavljam, da pride do velike natančnost, ko imamo liho število Čebišejevih točk, s katerimi lahko dobro interpoliramo to funkcijo.  
 
 ```jldoctest ;
 julia> fun3(x) = x^2 - 2*x
@@ -94,10 +94,3 @@ julia> e = abs(x-i)
 ```
 
 ![bi2](bi2.PNG)
-
-## Koda
-```@autodocs
-Modules = [NumMat, Base]
-Pages = ["baricentricna_interpolacija.jl"]
-Order   = [:function, :type]
-```
